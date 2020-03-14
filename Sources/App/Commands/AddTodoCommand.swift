@@ -28,7 +28,7 @@ struct AddTodoCommand: Command {
     func run(using context: CommandContext) throws -> EventLoopFuture<Void> {
         return context.container.withNewConnection(to: .psql) { db in
             let index: Int = Int(arc4random())
-            return Todo(id: index, title: "title\(arc4random())").create(on: db).transform(to: ())
+            return Todo(id: index, title: "title\(index)").create(on: db).transform(to: ())
         }
     }
 }
