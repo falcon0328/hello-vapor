@@ -1,0 +1,17 @@
+#set("title") { Todo一覧ページ }
+
+#set("body") {
+
+<div class="container">
+    <div class="page-header">
+        <h1>#get(title)</h1>
+    </div>
+    <ul class="list-group">
+        #for(todo in todos) {
+            <li class="list-group-item">#(todo.id): #(todo.title)</li>
+        }
+    </ul>
+</div>
+}
+
+#embed("base")
