@@ -8,10 +8,11 @@ final class TodoController {
     }
 
     /// Saves a decoded `Todo` to the database.
-    func create(_ req: Request) throws -> Future<Todo> {
-        return try req.content.decode(Todo.self).flatMap { todo in
-            return todo.save(on: req)
-        }
+    func create(_ req: Request) throws -> EventLoopFuture<Response> {
+        return try req.content.decode(Todo.self).map(to: Response.self, { todo in
+            _ = Todo.query(on: req).create(todo)
+            return req.redirect(to: "/todos", type: .normal)
+        })
     }
 
     /// Deletes a parameterized `Todo`.

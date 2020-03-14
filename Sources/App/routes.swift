@@ -9,7 +9,11 @@ public func routes(_ router: Router) throws {
     
     // Basic "Hello, world!" example
     router.get("hello") { req in
-        return "Hello, world!"
+        return try req.view().render("hello", ["name": "Leaf"])
+    }
+    
+    router.get("add") { req -> Future<View> in
+        return try req.view().render("add", ["name": "Leaf"])
     }
 
     // Example of configuring a controller
