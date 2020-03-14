@@ -17,7 +17,7 @@ let package = Package(
         .package(url: "https://github.com/vapor/fluent-postgresql.git", from: "1.0.0")
     ],
     targets: [
-        .target(name: "App", dependencies: ["Leaf", "FluentSQLite", "FluentPostgreSQL", "Vapor"]),
+        .target(name: "App", dependencies: ["Leaf", "FluentPostgreSQL", "Vapor"]),
         .target(name: "Run", dependencies: ["App"]),
         .testTarget(name: "AppTests", dependencies: ["App"])
     ]
