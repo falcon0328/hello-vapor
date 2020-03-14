@@ -12,6 +12,14 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     try routes(router)
     services.register(router, as: Router.self)
     
+    /// Create a `CommandConfig` with default commands.
+    var commandConfig = CommandConfig.default()
+    /// Add the `CowsayCommand`.
+    commandConfig.use(CowsayCommand(), as: "cowsay")
+    commandConfig.use(AddTodoCommand(), as: "add-todo")
+    /// Register this `CommandConfig` to services.
+    services.register(commandConfig)
+    
     // Leaf
     try services.register(LeafProvider())
     config.prefer(LeafRenderer.self, for: ViewRenderer.self)

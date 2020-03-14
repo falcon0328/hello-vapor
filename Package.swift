@@ -10,6 +10,9 @@ let package = Package(
         // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "3.0.0"),
         
+        /// 💻 APIs for creating interactive CLI tools.
+        .package(url: "https://github.com/vapor/console.git", from: "3.0.0"),
+        
         // Leaf
         .package(url: "https://github.com/vapor/leaf.git", from: "3.0.0"),
 
@@ -17,7 +20,7 @@ let package = Package(
         .package(url: "https://github.com/vapor/fluent-postgresql.git", from: "1.0.0")
     ],
     targets: [
-        .target(name: "App", dependencies: ["Leaf", "FluentPostgreSQL", "Vapor"]),
+        .target(name: "App", dependencies: ["Command", "Leaf", "FluentPostgreSQL", "Vapor"]),
         .target(name: "Run", dependencies: ["App"]),
         .testTarget(name: "AppTests", dependencies: ["App"])
     ]
