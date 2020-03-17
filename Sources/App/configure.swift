@@ -14,6 +14,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     
     /// Create a `CommandConfig` with default commands.
     var commandConfig = CommandConfig.default()
+    commandConfig.useFluentCommands()
     /// Add the `CowsayCommand`.
     commandConfig.use(CowsayCommand(), as: "cowsay")
     commandConfig.use(AddTodoCommand(), as: "add-todo")
